@@ -1,80 +1,130 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart</title>
-    <!-- Bootstrap RTL CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    />
-    <!-- SweetAlert2 CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
-    />
-    <!-- Google Font (Cairo) -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="Cart.css" />
-  </head>
-  <body>
-    <div id="cart" class="page">
-      <div class="container py-5" style="max-width: 800px">
-        <h3 class="section-title mb-4">سلة المشتريات</h3>
-        <div id="cart-items" class="bg-white p-3 rounded-4 shadow-sm"></div>
-        <div class="bg-white p-4 rounded-4 shadow-sm mt-3">
-          <div class="d-flex justify-content-between fs-5 fw-bold">
-            <span>الإجمالي:</span>
-            <span id="total-price" class="price">0 جنيه</span>
-          </div>
-          <hr />
-          <h5 class="fw-bold">بيانات التوصيل</h5>
-          <div class="row g-3 mt-1">
-            <div class="col-md-6">
-              <input
-                id="c-name"
-                class="form-control"
-                placeholder="الاسم بالكامل"
-              />
-            </div>
-            <div class="col-md-6">
-              <input
-                id="c-phone"
-                class="form-control"
-                placeholder="رقم الموبايل"
-              />
-            </div>
-            <div class="col-12">
-              <input
-                id="c-address"
-                class="form-control"
-                placeholder="العنوان بالتفصيل"
-              />
-            </div>
-            <div class="col-12">
-              <button
-                onclick="placeOrder()"
-                class="btn btn-main w-100 py-3 fs-5 fw-bold"
-              >
-                تأكيد الطلب <i class="bi bi-bag-check"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مطعم الشيف</title>
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="Cart.js"></script>
-  </body>
+</head>
+<body>
+    <!-- (Navbar) -->
+<nav class="navbar navbar-dark py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        
+        <a class="navbar-brand d-flex align-items-center gap-2 m-0 brand-logo" href="#">
+            <span>مطعم الشيف</span>
+            <i class="fa-solid fa-fire text-danger"></i>
+        </a>
+
+        <!-- الروابط وزر السلة-->
+        <div class="d-none d-lg-flex align-items-center">
+            <ul class="navbar-nav flex-row me-4 mb-0">
+                <li class="nav-item mx-2"><a class="nav-link active" href="#">الرئيسية</a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="#">المنيو</a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="#">لوحة التحكم</a></li>
+            </ul>
+            <a href="#" class="cart-btn position-relative text-dark text-decoration-none ms-3">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="ms-1">السلة</span>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </a>
+        </div>
+
+        <!-- زر الثلاث خطوط للموبايل-->
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </div>
+</nav>
+
+<!-- القائمة المنسدلة للموبايل) -->
+<div class="collapse d-lg-none mobile-dropdown-menu" id="mobileMenu">
+    <div class="container py-3">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="#">الرئيسية</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">المنيو</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">لوحة التحكم</a></li>
+            <li class="nav-item mt-2">
+                <a href="#" class="cart-btn d-flex align-items-center justify-content-center gap-2 text-dark text-decoration-none py-2 rounded bg-white w-100">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>السلة</span>
+                    <span class="badge rounded-pill bg-danger">0</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+    <!--  (Hero Section) -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>أشهى الأكلات والمشروبات لحد باب بيتك</h1>
+            <p>بيتزا، برجر، مشويات، وجبات سريعة، معجنات ومشروبات طازجة بأجود المكونات</p>
+            <button class="btn btn-custom-red">
+                تصفح المنيو الكامل <i class="fa-solid fa-arrow-left ms-2"></i>
+            </button>
+        </div>
+    </section>
+
+    <!--  قسم الأكثر طلباً -->
+    <section class="container my-5">
+        <h2 class="section-title">الأكثر طلباً</h2>
+        
+        <div class="row g-4">
+            <!-- كارد1 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" class="card-img-top" alt="بيتزا مارجريتا">
+                    <div class="card-body">
+                        <div class="product-category">بيتزا</div>
+                        <h5 class="product-title">بيتزا مارجريتا</h5>
+                        <p class="product-desc">صوص طماطم، جبنة موتزاريلا، أوريجانو، زيت زيتون</p>
+                        <div class="product-footer">
+                            <span class="product-price">85 جنيه</span>
+                            <button class="btn-add-cart">إضافة للسلة</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- كارد 2 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e" class="card-img-top" alt="بيتزا بيروني">
+                    <div class="card-body">
+                        <div class="product-category">بيتزا</div>
+                        <h5 class="product-title">بيتزا بيروني</h5>
+                        <p class="product-desc">صوص طماطم، جبنة موتزاريلا، شرائح بيبروني، طماطم كرزية</p>
+                        <div class="product-footer">
+                            <span class="product-price">110 جنيه</span>
+                            <button class="btn-add-cart">إضافة للسلة</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- كارد 3 -->
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591" class="card-img-top" alt="بيتزا مشكل جبن">
+                    <div class="card-body">
+                        <div class="product-category">بيتزا</div>
+                        <h5 class="product-title">بيتزا مشكل جبن</h5>
+                        <p class="product-desc">صوص طماطم، مكس جبن متنوع، موتزاريلا، رومي، شيدر، بلو تشيز</p>
+                        <div class="product-footer">
+                            <span class="product-price">105 جنيه</span>
+                            <button class="btn-add-cart">إضافة للسلة</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="bootstrap.bundle.min.js"></script>
+</body>
 </html>
