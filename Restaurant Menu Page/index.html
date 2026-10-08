@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>قائمة الطعام والمشروبات</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h3 class="section-title">
+      قائمة الطعام والمشروبات
+    </h3>
+
+    <div class="filters" id="filters">
+
+      <button class="filter-btn active" data-category="الكل">
+        الكل
+      </button>
+
+      <button class="filter-btn" data-category="بيتزا">
+        بيتزا
+      </button>
+
+      <button class="filter-btn" data-category="برجر">
+        برجر
+      </button>
+
+      <button class="filter-btn" data-category="مشويات">
+        مشويات
+      </button>
+
+      <button class="filter-btn" data-category="وجبات سريعة">
+        وجبات سريعة
+      </button>
+
+      <button class="filter-btn" data-category="مشروبات باردة">
+        مشروبات باردة
+      </button>
+
+      <button class="filter-btn" data-category="مشروبات ساخنة">
+        مشروبات ساخنة
+      </button>
+
+      <button class="filter-btn" data-category="حلويات">
+        حلويات
+      </button>
+
+    </div>
+
+    <div class="menu-grid" id="menu-grid"></div>
+
+  </div>
+
+  <button class="cart-button">
+    السلة
+    <span id="cart-count">0</span>
+  </button>
+
+  <script src="JS/data.js"></script>
+  <script src="JS/index.js"></script>
+
+</body>
+
+</html>
