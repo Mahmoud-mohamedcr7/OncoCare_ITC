@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة التحكم - إدارة الأصناف والطلبات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="style.css" rel="stylesheet"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+
+    <header class="page-header">
+    <h1>لوحة التحكم - إدارة الأصناف والطلبات</h1>
+    <div class="header-accent-bar"</div>
+    </header>
+
+    <main class="dashboard-grid">
+
+    <section class="card-panel">
+    <h2 class="section-heading">كل الأصناف - اضغط حذف لمسح أي صنف</h2>
+
+    <ul class="items-list" id="itemsList"> 
+        
+    </ul>
+
+    <div class="empty-placeholder" id="emptyPlaceholder">
+        لا توجد أصناف في القائمة حالياً. أضف صنفاً جديداً من النموذج!
+</div>
+    </section>
+
+    <aside class="side-column">
+
+    <div class="card-panel">
+        <h2 class="form-title">إضافة صنف جديد</h2>
+        <form id="addItemForm" autocomplete="off">
+
+        <div class="form-group">
+                <input type="text" id="itemName" class="form-control" placeholder="اسم الصنف" required>
+        </div>
+
+        <div class="form-group">
+                <input type="number" id="itemPrice" class="form-control" placeholder="السعر بالجنيه" required min="1">
+        </div>
+            
+        <div class="form-group">
+            <select id="itemCategory" class="form-control">
+                <option value="بيتزا">بيتزا</option>
+                <option value="برجر" selected>برجر</option>
+                <option value="مشروبات">مشروبات</option>
+                <option value="حلويات">حلويات</option>
+            </select>
+        </div>
+        <div class="form-group">
+                <input type="url" id="itemImage" class="form-control" placeholder="رابط الصورة https://..." >
+        </div>
+        <div class="form-group">
+                <textarea id="itemDesc" class="form-control" placeholder="وصف الصنف" rows="3"></textarea>
+        </div>
+            <button type="submit" class="btn-submit">إضافة للمنيو</button>
+        </form>
+</div>
+    </aside>
+    </main>
+</div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
